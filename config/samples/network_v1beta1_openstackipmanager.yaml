@@ -1,0 +1,6 @@
+apiVersion: network.openstack.org/v1beta1
+kind: OpenStackIPManager
+metadata:
+  name: ipmanager
+spec:
+  dummy: ''

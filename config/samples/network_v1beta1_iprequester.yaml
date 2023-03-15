@@ -1,0 +1,9 @@
+apiVersion: network.openstack.org/v1beta1
+kind: IPRequester
+metadata:
+  name: iprequester-sample
+  annotations:
+    openstack-k8s-operators.org/osnets: '[{"name": "ctlplane", "subnetName": "ctlplane-subnet"}]'
+spec:
+  hostname: server-0
+  # TODO(user): Add fields here

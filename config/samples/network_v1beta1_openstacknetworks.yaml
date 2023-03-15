@@ -1,0 +1,32 @@
+apiVersion: network.openstack.org/v1beta1
+kind: OpenStackNetworks
+metadata:
+  labels:
+    app.kubernetes.io/name: openstacknetworks
+    app.kubernetes.io/instance: openstacknetworks-sample
+    app.kubernetes.io/part-of: infra-operator
+    app.kubernetes.io/managed-by: kustomize
+    app.kubernetes.io/created-by: infra-operator
+  name: openstacknetworks
+spec:
+  networks:
+    ctlplane:
+      subnets:
+        - name: ctlplane-subnet
+          cidr: 9.0.0.0/24
+          allocationRange:
+            allocationStart: 9.0.0.4
+            allocationEnd: 9.0.0.250
+          gateway: 9.0.0.254
+      domainName: redhat.com
+    storage:
+      subnets:
+        - name: storage-subnet
+          cidr: 9.0.2.0/24
+          allocationRange:
+            allocationStart: 9.0.2.4
+            allocationEnd: 9.0.2.250
+          gateway: 9.0.2.254
+      domainName: redhat.com
+
+  # TODO(user): Add fields here
