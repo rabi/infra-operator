@@ -1,0 +1,24 @@
+apiVersion: network.openstack.org/v1beta1
+kind: OpenStackIPManager
+metadata:
+  name: ipmanager
+spec:
+  networks:
+    ctlplane:
+      subnets:
+        - name: ctlplane-subnet
+          cidr: 10.0.0.0/24
+          allocationRange:
+            allocationStart: 10.0.0.4
+            allocationEnd: 10.0.0.250
+          gateway: 10.0.0.254
+      domainName: redhat.com
+    storage:
+      subnets:
+        - name: storage-subnet
+          cidr: 10.0.2.0/24
+          allocationRange:
+            allocationStart: 10.0.2.4
+            allocationEnd: 10.0.2.250
+          gateway: 10.0.2.254
+      domainName: redhat.com

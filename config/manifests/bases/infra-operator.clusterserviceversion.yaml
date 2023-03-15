@@ -10,6 +10,11 @@ spec:
   apiservicedefinitions: {}
   customresourcedefinitions:
     owned:
+    - description: IPRequester is the Schema for the iprequesters API
+      displayName: IPRequester
+      kind: IPRequester
+      name: iprequesters.network.openstack.org
+      version: v1beta1
     - description: Memcached is the Schema for the memcacheds API
       displayName: Memcached
       kind: Memcached
@@ -19,6 +24,11 @@ spec:
       displayName: Open Stack Client
       kind: OpenStackClient
       name: openstackclients.client.openstack.org
+      version: v1beta1
+    - description: OpenStackIPManager is the Schema for the openstackipmanagers API
+      displayName: Open Stack IPManager
+      kind: OpenStackIPManager
+      name: openstackipmanagers.network.openstack.org
       version: v1beta1
     - description: TransportURL is the Schema for the transporturls API
       displayName: Transport URL
