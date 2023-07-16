@@ -89,7 +89,7 @@ help: ## Display this help.
 .PHONY: manifests
 manifests: gowork controller-gen ## Generate WebhookConfiguration, ClusterRole and CustomResourceDefinition objects.
 	$(CONTROLLER_GEN) rbac:roleName=manager-role crd webhook paths="./..." output:crd:artifacts:config=config/crd/bases && \
-	rm -rf apis/bases && cp -a config/crd/bases apis/
+	rm -f apis/bases/* && cp -a config/crd/bases apis/
 
 .PHONY: generate
 generate: controller-gen ## Generate code containing DeepCopy, DeepCopyInto, and DeepCopyObject method implementations.
@@ -116,7 +116,7 @@ PROC_CMD = --procs ${PROCS}
 test: manifests generate gowork fmt vet envtest ginkgo ## Run tests.
 	KUBEBUILDER_ASSETS="$(shell $(ENVTEST) -v debug --bin-dir $(LOCALBIN) use $(ENVTEST_K8S_VERSION) -p path)" \
 	OPERATOR_TEMPLATES="$(PWD)/templates" \
-	$(GINKGO) --trace --cover --coverpkg=../../pkg/dnsmasq,../../pkg/ipam,../../controllers,../../apis/network/v1beta1 --coverprofile cover.out --covermode=atomic ${PROC_CMD} $(GINKGO_ARGS) ./test/... ./apis/network/...
+	$(GINKGO) --trace --cover --coverpkg=../../pkg/dnsmasq,../../pkg/ipam,../../controllers,../../apis/network/v1beta1 --coverprofile cover.out --covermode=atomic ${PROC_CMD} $(GINKGO_ARGS) ./tests/... ./apis/network/...
 
 ##@ Build
 
