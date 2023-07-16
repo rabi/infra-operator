@@ -6,11 +6,11 @@ spec:
   externalEndpoints:
   - ipAddressPool: ctlplane
     loadBalancerIPs:
-    - 192.168.122.80
+    - 192.168.111.80
   replicas: 1
   options:
   - key: server
     values:
-    - 192.168.122.1
+    - 192.168.111.1
   debug:
     service: false
